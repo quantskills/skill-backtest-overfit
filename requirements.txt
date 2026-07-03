@@ -1,0 +1,5 @@
+numpy>=1.22,<2.0
+scipy>=1.10
+pandas>=2.0.0
+# Optional — only needed for live data; the skill runs offline without it.
+# panda_data==0.0.9
