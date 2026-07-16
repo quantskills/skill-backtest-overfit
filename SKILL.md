@@ -17,6 +17,44 @@ metadata:
   collection: portfolio-risk-validation
 ---
 
+```json qsh-form
+{
+  "version": 1,
+  "task": {
+    "placeholder": "说明待检验的回测、收益序列、试验次数及数据文件；可上传 selected_returns 和 trials_matrix",
+    "required": true
+  },
+  "fields": [
+    {
+      "key": "n_trials",
+      "label": "试验次数",
+      "type": "number",
+      "placeholder": "例如 200",
+      "help": "请如实填写所有尝试过的参数或策略配置数量"
+    },
+    {
+      "key": "periods_per_year",
+      "label": "年化期数",
+      "type": "number",
+      "default": "252",
+      "help": "日频通常为 252"
+    },
+    {
+      "key": "haircut_method",
+      "label": "多重检验方法",
+      "type": "select",
+      "default": "holm",
+      "options": [
+        { "value": "holm", "label": "Holm" },
+        { "value": "bonferroni", "label": "Bonferroni" },
+        { "value": "bhy", "label": "BHY" }
+      ]
+    }
+  ],
+  "prompt_template": "{{#task}}任务与材料：\n{{task}}\n\n{{/task}}{{#attachments}}用户上传的材料（已放入工作区）：\n{{attachments}}\n\n{{/attachments}}检验该回测的过拟合与多重选择偏差。{{#n_trials}}按真实试验次数 {{n_trials}} 计算。{{/n_trials}}{{#periods_per_year}}年化期数采用 {{periods_per_year}}。{{/periods_per_year}}{{#haircut_method}}多重检验校正采用 {{haircut_method}}。{{/haircut_method}}计算 DSR、PBO、Haircut Sharpe 和最小样本长度，缺少试验矩阵时明确降级项及局限，给出可追溯的通过/失败结论，输出中文报告。"
+}
+```
+
 # skill-backtest-overfit
 
 role: skill · output: OverfitReport (JSON + text) · paradigm: statistical validation of backtests
