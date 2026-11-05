@@ -6,7 +6,7 @@ description: >
   real, whether a strategy is overfit, or wants to validate results before
   trusting them. Computes Deflated Sharpe Ratio, Probability of Backtest
   Overfitting (PBO), multiple-testing haircut, and Minimum Track Record Length.
-license: GPL-3.0
+license: GPL-3.0-only
 category: 工具
 metadata:
   organization: QuantSkills
@@ -134,3 +134,7 @@ skill-backtest-overfit/
 - DSR/PSR 用**逐期**Sharpe，勿传年化值。
 - PBO 需要足够多的配置列（N≥10 才有意义）；`n_blocks` 必须为偶数且 ≤ T。
 - 只做研究/方法论参考，不构成投资建议。
+
+## Pandadata compatibility
+
+[Pandadata 1.0.6 compatibility](references/pandadata-compatibility.md) — exact SDK baseline, validation scope, and shared guidance for all supported agent runtimes.
